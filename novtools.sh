@@ -18,7 +18,8 @@ echo
 read -p "Hai $nama, Ingin Lanjut?"
 echo "yes/no"
 read confirm
-if [ $confirm = "yes" ]; then
+if [ $confirm = "yes" ]; 
+then
 clear
 sleep 0.3
 echo "[#]> Tools Sudah Di Aktifkan" | lolcat
