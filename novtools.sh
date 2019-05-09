@@ -29,7 +29,6 @@ load(){
         ((i += RANDOM%5+2))
         sleep 0.2
     done
-#
 clear
 echo "[#]> Tools Sudah Di Aktifkan" | lolcat
 echo "[#]> Exit 00" | lolcat
