@@ -10,16 +10,16 @@ echo "----------------------------------------------------
 | # Facebook  : www.facebook.com/rianfarhanfaiz   |
 | # Version   : V 1.0 (Beta)                      |
 --------------------------------------------------" | lolcat
-sleep 0.5
+sleep 1
 echo
 echo "Selamat Datang, Nama Anda Siapa?"
-read -p "Masukkan Nama Anda : "nama
+read -p "Masukkan Nama Anda : " nama
 echo
 read -p "Hai $nama, Semoga Kabarmu Baik-Baik Saja <enter>"
-sleep 0.5
+sleep 0.3
 echo "[#]> Tools Sudah Di Aktifkan" | lolcat
 echo "[#]> Exit 00 | lolcat
-sleep 0.5
+sleep 1
 echo ""
 echo -e $b "1. Tools Nmap${enda}";
 echo
