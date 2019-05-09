@@ -17,6 +17,7 @@ read -p "Masukkan Nama Anda : " nama
 echo
 read -p "Hai $nama, Semoga Kabarmu Baik-Baik Saja <enter>"
 sleep 0.3
+echo
 }
 load(){
     echo -e "\n"
@@ -30,6 +31,9 @@ load(){
         sleep 0.2
     done
 }
+
+#
+clear
 echo "[#]> Tools Sudah Di Aktifkan" | lolcat
 echo "[#]> Exit 00" | lolcat
 sleep 1
