@@ -15,12 +15,7 @@ echo
 echo "Selamat Datang, Nama Anda Siapa?"
 read -p "Masukkan Nama Anda : " nama
 echo
-read -p "Hai $nama, Ingin Lanjut?"
-echo "yes/no"
-read confirm
-if [ $confirm = "yes" ]; 
-then
-clear
+read -p "Hai $nama, Ingin Lanjut?" enter
 sleep 0.3
 echo "[#]> Tools Sudah Di Aktifkan" | lolcat
 echo "[#]> Exit 00" | lolcat
