@@ -18,7 +18,6 @@ echo
 read -p "Hai $nama, Semoga Kabarmu Baik-Baik Saja <enter>"
 sleep 0.3
 echo
-}
 load(){
     echo -e "\n"
     bar=" ==================================================== "
@@ -30,8 +29,6 @@ load(){
         ((i += RANDOM%5+2))
         sleep 0.2
     done
-}
-
 #
 clear
 echo "[#]> Tools Sudah Di Aktifkan" | lolcat
