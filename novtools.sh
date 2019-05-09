@@ -2,14 +2,14 @@
 #Version 1.0 (Beta)
 clear
 figlet NOV TOOLS | lolcat
-echo "----------------------------------------------------
+echo "---------------------------------------------------
 | # Author    : NOV                               |
 | # Email     : trianov1506@gmail.com             |
 | # Instagram : @trianovwidyandaru                |
 | # Website   : www.3anovproduction.wordpress.com |
 | # Facebook  : www.facebook.com/rianfarhanfaiz   |
 | # Version   : V 1.0 (Beta)                      |
---------------------------------------------------" | lolcat
+---------------------------------------------------" | lolcat
 sleep 1
 echo
 echo "Selamat Datang, Nama Anda Siapa?"
@@ -18,7 +18,7 @@ echo
 read -p "Hai $nama, Semoga Kabarmu Baik-Baik Saja <enter>"
 sleep 0.3
 echo "[#]> Tools Sudah Di Aktifkan" | lolcat
-echo "[#]> Exit 00 | lolcat
+echo "[#]> Exit 00" | lolcat
 sleep 1
 echo ""
 echo -e $b "1. Tools Nmap${enda}";
