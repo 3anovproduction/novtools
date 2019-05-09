@@ -17,6 +17,19 @@ read -p "Masukkan Nama Anda : " nama
 echo
 read -p "Hai $nama, Semoga Kabarmu Baik-Baik Saja <enter>"
 sleep 0.3
+}
+load(){
+    echo -e "\n"
+    bar=" ==================================================== "
+    barlength=${#bar}
+    i=0
+    while((i<100)); do
+        n=$((i*barlength / 100))
+        printf "\e[00;32m\r[%-${barlength}s]\e[00m" "${bar:0:n}"
+        ((i += RANDOM%5+2))
+        sleep 0.2
+    done
+}
 echo "[#]> Tools Sudah Di Aktifkan" | lolcat
 echo "[#]> Exit 00" | lolcat
 sleep 1
