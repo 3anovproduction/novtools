@@ -5,7 +5,7 @@
         echo '<script>window.location="login-admin.php"</script>';
     }
 
-    $member = mysqli_query($conn, "SELECT * FROM tb_pendaftaran WHERE user_id = '".$_GET['id']."'");
+    $member = mysqli_query($conn, "SELECT * FROM tb_member WHERE id = '".$_GET['id']."'");
     $u = mysqli_fetch_object($member);
 
 ?>
@@ -43,13 +43,13 @@
        <tr>
            <td>User ID</td>
            <td>:</td>
-           <td><?php echo $u->user_id ?></td>
+           <td><?php echo $u->id ?></td>
         </tr>
 
         <tr>
-           <td>Tahun</td>
+           <td>Tanggal Pendaftaran</td>
            <td>:</td>
-           <td><?php echo $u->tahun ?></td>
+           <td><?php echo $u->tgl_pendaftaran ?></td>
         </tr>
 
         <tr>
@@ -61,25 +61,31 @@
         <tr>
            <td>Nama</td>
            <td>:</td>
-           <td><?php echo $u->nm_peserta ?></td>
-        </tr>
-
-        <tr>
-           <td>Tempat & Tgl Lahir</td>
-           <td>:</td>
-           <td><?php echo $u->tmp_lahir.', '.$u->tgl_lahir ?></td>
+           <td><?php echo $u->nama ?></td>
         </tr>
         
         <tr>
            <td>Jenis Kelamin</td>
            <td>:</td>
-           <td><?php echo $u->jk ?></td>
+           <td><?php echo $u->jenis_kelamin ?></td>
         </tr>
 
         <tr>
            <td>Alamat</td>
            <td>:</td>
-           <td><?php echo $u->alamat_peserta ?></td>
+           <td><?php echo $u->alamat ?></td>
+        </tr>
+
+        <tr>
+           <td>No.HP</td>
+           <td>:</td>
+           <td><?php echo $u->telp ?></td>
+        </tr>
+
+        <tr>
+           <td>Email</td>
+           <td>:</td>
+           <td><?php echo $u->email ?></td>
         </tr>
     
     </table>    

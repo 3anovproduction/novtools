@@ -1,73 +1,103 @@
 <?php
+    session_start();
     include 'koneksi.php';
+    if($_SESSION['stat_login'] != true){
+        echo '<script>window.location="login-admin.php"</script>';
+    }
 
-    $user_id = $_GET ['user_id'];
-    $sqlGet = "SELECT * FROM tb_pendaftaran WHERE user_id= '$user_id'";
+    $member = mysqli_query($conn, "SELECT * FROM tb_member WHERE user_id = '".$_GET['id']."'");
+    $u = mysqli_fetch_object($member);
 
-    $queryGet= mysqli_query($conn, $sqlGet);
-    $data = mysqli_fetch_array($queryGet);
 ?>
 <!DOCTYPE html>
-<html lang="en">
-    <head>
+<html>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
-    <!--Bootstrap-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <!--End Bootstrap-->
-    <title>Add Member</title>
+    <title>Home Admin</title>
 </head>
 <body>
-    <div class="w-50 mx-auto border p-3 mt-5">
-    <a href="member.php">Back</a>
-    <form action="edit-member.php" method="post">
-        <label for="user_id">UserID</label>
-        <input type="text" id="user_id" name="user_id" value="<?php echo $data['user_id']?>" class="form-control" readonly>
 
-        <label for="nama">Nama</label>
-        <input type="text" id="nama" name="nama" value="<?php echo $data['nama']?>" class="form-control" required>
+    <!--Header Admin-->
+    <header>
+        <h1><a href="home-admin.php">Administrator</a></h1>
+        <ul>
+            <li><a href="home-admin.php">Home</a></li>
 
-        <label for="jenis_kelamin">Jenis Kelamin</label>
-        <select name="jenis_kelamin" id="jenis_kelamin" class="form-select" required>
-            <option><?php echo $data['jenis_kelamin']?></option>
-            <option value="laki-laki">Laki-Laki</option>
-            <option value="perempuan">Perempuan</option>
-        </select>
+            <li><a href="member.php">Member</a></li>
 
-        <label for="alamat">Alamat</label>
-        <input type="text" id="alamat" name="alamat" value="<?php echo $data['alamat']?>" class="form-control" required>
+            <li><a href="logout-admin.php">Logout</a></li>
+        </ul>
+    </header>    
 
-        <label for="telp">No.HP</label>
-        <input type="text" id="telp" name="telp" value="<?php echo $data['telp']?>" class="form-control" required>
+    <!--Konten-->
+    <section class="content">
+        <h2>Detail Member</h2>
+        <div class="box">
+            
+        <table class="table-data" border="0">
+       <tr>
+           <td>User ID</td>
+           <td>:</td>
+           <td><?php echo $u->id ?></td>
+        </tr>
 
-        <input class="btn btn-primary mt-3" type="submit" name="edit" value="Edit">
-    </form>
-</div>
+        <tr>
+           <td>Tanggal Pendaftaran</td>
+           <td>:</td>
+           <td><?php echo $u->tgl_pendaftaran ?></td>
+        </tr>
 
-<?php
-    if(isset($_POST['edit'])) {
-        $user_id= $_POST['user_id'];
-        $nama= $_POST['nama'];
-        $jenis_kelamin= $_POST['jenis_kelamin'];
-        $alamat= $_POST['alamat'];
-        $telp= $_POST['telp'];
+        <tr>
+           <td>Pembelian</td>
+           <td>:</td>
+           <td><?php echo $u->pembelian ?></td>
+        </tr>
 
+        <tr>
+           <td>Nama</td>
+           <td>:</td>
+           <td><?php echo $u->nama ?></td>
+        </tr>
 
-        $sqlUpdate= "UPDATE tb_pendaftaran 
-                    SET nama='$nama', jenis_kelamin='$jenis_kelamin', alamat='$alamat', telp='$telp', WHERE user_id= '$user_id'";
-        $queryUpdate= mysqli_query($conn, $sqlUpdate);
+        <tr>
+           <td>Tanggal Lahir</td>
+           <td>:</td>
+           <td><?php echo $u->tgl_lahir ?></td>
+        </tr>
         
-    }
-?>
+        <tr>
+           <td>Jenis Kelamin</td>
+           <td>:</td>
+           <td><?php echo $u->jenis_kelamin ?></td>
+        </tr>
 
-    <!--Bootstrap JavaScript-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-    <!--End Bootstrap JavaScript-->
+        <tr>
+           <td>Alamat</td>
+           <td>:</td>
+           <td><?php echo $u->alamat ?></td>
+        </tr>
+
+        <tr>
+           <td>No.HP</td>
+           <td>:</td>
+           <td><?php echo $u->telp ?></td>
+        </tr>
+
+        <tr>
+           <td>Email</td>
+           <td>:</td>
+           <td><?php echo $u->email ?></td>
+        </tr>
+    
+    </table>    
+
+        </div>
+    </section>
 
 </body>
 </html>
-    

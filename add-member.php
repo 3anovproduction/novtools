@@ -17,53 +17,53 @@
 </head>
 <body>
     <div class="w-50 mx-auto border p-3 mt-5">
-    <a href="member.php">Back</a>
+    <a class="btn-close" href="member.php" type="button" ></a>
     <form action="add-member.php" method="post">
         <label for="user_id">UserID</label>
-        <input type="text" id="user_id" name="user_id" class="form-control" required>
+        <input type="text" id="id" name="id" class="form-control" required>
 
         <label for="nama">Nama</label>
         <input type="text" id="nama" name="nama" placeholder="Masukkan Nama Lengkap" class="form-control" required>
 
         <label for="jenis_kelamin">Jenis Kelamin</label>
         <select name="jenis_kelamin" id="jenis_kelamin" class="form-select" required>
-            <option value="">- Pilih -</option>
+            <option disabled="disabled" selected="selected">-- Pilih --</option>
             <option value="laki-laki">Laki-Laki</option>
             <option value="perempuan">Perempuan</option>
         </select>
 
         <label for="alamat">Alamat</label>
-        <input type="text" id="alamat" name="alamat" placeholder="example: Jl.Kenangan No.1, Jakarta" class="form-control" required>
+        <input type="text" id="alamat" name="alamat" placeholder="example: Jl. Kenangan No.1, City" class="form-control" required>
 
         <label for="telp">No.HP</label>
         <input type="text" id="telp" name="telp" placeholder="example: 0812-3456-7890" class="form-control" required>
 
-        <input class="btn btn-success mt-3" type="submit" name="add" value="+Add">
+        <input class="btn btn-success mt-3" href="member.php" type="submit" name="add" value="+Add">
     </form>
 </div>
 
 <?php
     if(isset($_POST['add'])) {
-        $user_id= $_POST['user_id'];
+        $id= $_POST['id'];
         $nama= $_POST['nama'];
         $jenis_kelamin= $_POST['jenis_kelamin'];
         $alamat= $_POST['alamat'];
         $telp= $_POST['telp'];
 
-        $sqlGet= "SELECT * FROM tb_pendaftaran WHERE user_id='$user_id'";
+        $sqlGet= "SELECT * FROM tb_member WHERE id='$id'";
         $queryGet= mysqli_query($conn, $sqlGet);
         $cek= mysqli_num_rows($queryGet);
 
-        $sqlInsert= "INSERT INTO tb_pendaftaran(user_id,nama,jenis_kelamin,alamat,telp) VALUES ('$user_id', '$nama', '$jenis_kelamin', '$alamat', '$telp')";
+        $sqlInsert= "INSERT INTO tb_member(id,nama,jenis_kelamin,alamat,telp) VALUES ('$id', '$nama', '$jenis_kelamin', '$alamat', '$telp')";
         $queryInsert= mysqli_query($conn, $sqlInsert);
 
         if(isset($sqlInsert) && $cek <= 0){
             echo "
-            <div class='alert alert-success'>Member berhasil ditambahkan!<a href='member.php'</a>View</div>";
+            <center><div class='alert alert-success'>Member berhasil ditambahkan! &nbsp; <a href='member.php'</a>View</div></center>";
 
          }else if($cek >= 1){
                 echo "
-                <div class='alert alert-danger'>Member gagal ditambahkan!<a href='member.php'</a>View</div>";
+                <center><div class='alert alert-danger'>Member gagal ditambahkan!<a href='member.php'</a>View</div></center>";
             }
         
     }
